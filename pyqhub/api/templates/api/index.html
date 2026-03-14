@@ -8,26 +8,15 @@
 
 {% block  content%}
 
-    <div>
-        <p>hello world</p>
+<div class="land">
+       
+
+    <!-- <img id="mainimg" src="{% static 'images/pexels-olia-danilevich-5088019 1@2x.png' %}" alt=""> -->
+    <div class="imgdiv">
+        <h1>Your Shortcut To Exam Stress</h1>
+        <h2>PYQ's</h2>
     </div>
-
-{% endblock content %}
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="land">
-    <h1>Your Shortcut To Exam Stress: PYQs</h3>
-    <img height=100vh; src="pexels-olia-danilevich-5088019 1@2x.png" alt="">
-    <h2>PYQ's</h2>
-    </div>
+</div>
 
     <div>
         <h3>Download and practice previous year question papers for better exam preparation.</h3>
@@ -42,25 +31,69 @@
     </div>
 
     <div>
-        <a href=""><img height=100vh; src="pexels-olia-danilevich-5088019 1@2x.png" alt=""></a>
-        <a href=""><img height=100vh; src="pexels-olia-danilevich-5088019 1@2x.png" alt=""></a>
-        <a href=""><img height=100vh; src="pexels-olia-danilevich-5088019 1@2x.png" alt=""></a><br>
-        <a href=""><img height=100vh; src="pexels-olia-danilevich-5088019 1@2x.png" alt=""></a>
-        <a href=""><img height=100vh; src="pexels-olia-danilevich-5088019 1@2x.png" alt=""></a>
-        <a href=""><img height=100vh; src="pexels-olia-danilevich-5088019 1@2x.png" alt=""></a>
+        <a href=""><img height=100vh; src = "{% static 'images/ChatGPT Image Mar 15, 2026, 01_14_09 AM.png' %}" alt=""></a>
+        <a href=""><img height=100vh; src = "{% static 'images/ChatGPT Image Mar 15, 2026, 01_14_09 AM.png' %}" alt=""></a>
+        <a href=""><img height=100vh; src = "{% static 'images/ChatGPT Image Mar 15, 2026, 01_14_09 AM.png' %}" alt=""></a><br>
+        <a href=""><img height=100vh; src = "{% static 'images/ChatGPT Image Mar 15, 2026, 01_14_09 AM.png' %}" alt=""></a>
+        <a href=""><img height=100vh; src = "{% static 'images/ChatGPT Image Mar 15, 2026, 01_14_09 AM.png' %}" alt=""></a>
+        <a href=""><img height=100vh; src = "{% static 'images/ChatGPT Image Mar 15, 2026, 01_14_09 AM.png' %}" alt=""></a>
     </div>
 
     <div>
         <h3>Select Your Semester:</h3>
-        <input type="radio">    
-        <input type="radio">
-        <input type="radio">
-        <input type="radio">
-        <input type="radio">
-        <input type="radio">
-        <input type="radio">
-        <input type="radio">
+        <input type="radio" id="s1" name="sem">
+        <label for="s1">1st</label>
+
+        <input type="radio" id="s2" name="sem">
+        <label for="s2">2nd</label>
+
+        <input type="radio" id="s3" name="sem">
+        <label for="s3">3rd</label>
+
+        <input type="radio" id="s4" name="sem">
+        <label for="s4">4th</label>
+
+        <input type="radio" id="s5" name="sem">
+        <label for="s5">5th</label>
+
+        <input type="radio" id="s6" name="sem">
+        <label for="s6">6th</label>
+
+        <input type="radio" id="s7" name="sem">
+        <label for="s7">7th</label>
+
+        <input type="radio" id="s8" name="sem">
+        <label for="s8">8th</label>
     </div>
 
-</body>
-</html>
+    <div>
+        <h3>Select Examination:</h3>
+        <input type="radio" id="mid" name="exam">
+        <label for="mid">Midsem</label>
+        <input type="radio" id="end" name="exam">
+        <label for="end">Endsem</label>
+    </div>
+
+    <div>
+        <h3>Select Subject:</h3>
+        <input type="checkbox" id="sub1" name="Subject">
+        <label for="sub1">sub1</label>
+
+        <input type="checkbox" id="sub2" name="Subject">
+        <label for="sub2">sub2</label>
+
+        <input type="checkbox" id="sub3" name="Subject">
+        <label for="sub3">sub3</label>
+
+        <input type="checkbox" id="sub4" name="Subject">
+        <label for="sub4">sub4</label>
+
+        <input type="checkbox" id="sub5" name="Subject">
+        <label for="sub5">sub5</label>
+
+        <input type="checkbox" id="sub6" name="Subject">
+        <label for="sub6">sub6</label>
+    
+    </div>
+
+{% endblock content %}

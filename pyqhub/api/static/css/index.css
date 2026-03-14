@@ -1,6 +1,79 @@
-#page1{
+body{
+    margin: 0;
     width: 100%;
     height: 100vh;
-    background-color: red;
+    background-color: #c68c46;
+    overflow-x: hidden;
+    
 
+}
+#mainimg{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:92vw;
+
+    border-radius:30px;
+    object-fit:cover;
+    position: relative;
+    object-position: top;
+}
+.land{
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1{position:absolute;
+    top:-40px;
+    right:-80px;
+    width: 1000px;
+    color:rgba(255, 255, 255, 0.829);
+    z-index: 1;
+    background-color: #c68c46;
+    padding-top: 30px;
+    border-radius: 20px;
+    padding-bottom: 15px;
+    padding-left: 40px;
+    font-family: "Kanit", sans-serif;
+    font-size: 35px;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+    font-weight: bold;
+    
+}
+ .land .imgdiv{
+    background-image: url("../images/ChatGPT\ Image\ Mar\ 15\,\ 2026\,\ 01_14_09\ AM.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    object-position: bottom;
+    width:90vw;
+    height: 92vh;
+
+    border-radius:30px;
+    object-fit:cover;
+    position: relative;
+ }
+
+ .imgdiv h2{position:absolute;
+    bottom:-150px;
+    left:-20px;
+    color:rgba(255, 255, 255, 0.76);
+    z-index: 1;
+    background-color: #c68c46;
+    padding-top: 30px;
+    border-radius: 25px;
+    padding-bottom: 15px;
+    padding-left: 40px;
+    font-family: "Kanit", sans-serif;
+    font-size: 10rem;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+    font-weight: bold;
+    
 }
