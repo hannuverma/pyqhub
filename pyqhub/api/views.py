@@ -10,7 +10,7 @@ def index(request):
 
     semester = request.GET.get('semester')
     exam_type = request.GET.get('exam')
-    subject = request.GET.get('subject')
+    subject = request.GET.getlist('subject')
     subjects = Subject.objects.all()
 
     if semester:
@@ -18,7 +18,7 @@ def index(request):
         subjects = subjects.filter(semester__number=semester)
 
     if subject:
-        papers = papers.filter(subject__name__icontains=subject)
+        papers = papers.filter(subject__id__in=subject)
 
     if exam_type:
         papers = papers.filter(exam_type=exam_type)
@@ -28,6 +28,7 @@ def index(request):
         'papers': papers,
         "subjects": subjects,
         'semesters': Semester.objects.all(),
+        'selected_subjects': subject
     }
     return render(request, 'api/index.html', content)
 # Create your views here.
