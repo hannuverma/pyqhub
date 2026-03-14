@@ -1,17 +1,207 @@
 {% load static %}
 
-
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}" />
 {% endblock styles %}
 
+{% block content %}
 
-{% block  content%}
+<div class="land">
+       
+
+    <!-- <img id="mainimg" src="{% static 'images/pexels-olia-danilevich-5088019 1@2x.png' %}" alt=""> -->
+    <div class="imgdiv">
+        <h1>Your Shortcut To Exam Stress</h1>
+        <h2>PYQ's</h2>
+    </div>
+</div>
 
     <div>
-        <p>hello world</p>
+        <h3>Download and practice previous year question papers for better exam preparation.</h3>
     </div>
 
+    <div>
+        <h3>year 2025- 26 papers are updated</h3>
+    </div>
+
+    <div>
+        <h2>HERE ARE YOUR PAPERS :</h2>
+    </div>
+
+    <div>
+        {% for paper in papers %}
+
+            <div>
+
+            <h3>{{ paper.subject.name }} ({{ paper.year }})</h3>
+
+            <p>
+                Semester {{ paper.semester }} |
+                {{ paper.get_exam_type_display }}
+            </p>
+
+            <a href="{{ paper.pdf.url }}">
+                <img src="{{ paper.preview.url }}" alt="">
+            </a>
+
+            </div>
+
+            {% empty %}
+
+            <p>No papers found</p>
+
+        {% endfor %}
+    </div>
+
+    <form method="GET">
+        <h3>Select Your Semester:</h3>
+        <div>
+            <label>
+            <input
+            type="radio"
+            name="semester"
+            value=""
+            onchange="this.form.submit()"
+            {% if not request.GET.semester %}
+            checked
+            {% endif %}
+            >
+            All Semesters
+            </label>
+
+            {% for semester in semesters %}
+
+            <label>
+            <input
+            type="radio"
+            name="semester"
+            value="{{ semester.number }}"
+            onchange="this.form.submit()"
+            {% if request.GET.semester == semester.number|stringformat:"s" %}
+            checked
+            {% endif %}
+            >
+            Semester {{ semester.number }}
+            </label>
+
+            {% endfor %}
+
+            </div>
+
+        <h3>Select Examination:</h3>
+        <div>
+            <label>
+            <input
+            type="radio"
+            name="exam"
+            value=""
+            onchange="this.form.submit()"
+            {% if not request.GET.exam %}
+            checked
+            {% endif %}
+            >
+            All Exams
+            </label>
+
+
+            <label>
+            <input
+            type="radio"
+            name="exam"
+            value="MIDSEM"
+            onchange="this.form.submit()"
+            {% if request.GET.exam == "MIDSEM" %}
+            checked
+            {% endif %}
+            >
+            Mid Sem
+            {{ MIDSEM }}
+
+            </label>
+            <label>
+            <input
+            type="radio"
+            name="exam"
+            value="ENDSEM"
+            onchange="this.form.submit()"
+            {% if request.GET.exam == "ENDSEM" %}
+            checked
+            {% endif %}
+            >
+            End Sem
+            {{ ENDSEM }}
+            </label>
+
+
+            </div>
+
+        <h3>Select Subject:</h3>
+        <div>
+
+            <!-- ALL SUBJECTS -->
+            <label>
+            <input
+            type="checkbox"
+            id="allSubjects"
+            name="all_subjects"
+            value="all"
+            onchange="handleAllSubjects(this)"
+            {% if not selected_subjects %}
+            checked
+            {% endif %}
+            >
+            All Subjects
+            </label>
+
+            {% for subject in subjects %}
+
+            <label>
+            <input
+            type="checkbox"
+            class="subjectCheckbox"
+            name="subject"
+            value="{{ subject.id }}"
+            onchange="handleSubjectChange(this)"
+
+            {% if subject.id|stringformat:"s" in selected_subjects %}
+            checked
+            {% endif %}
+            >
+            {{ subject.name }}
+            </label>
+
+            {% endfor %}
+
+        </div>
+    </form>
+
+    <script>
+        function handleAllSubjects(allBox) {
+
+            const subjects = document.querySelectorAll(".subjectCheckbox");
+
+            if (allBox.checked) {
+                subjects.forEach(box => {
+                    box.checked = false;
+                });
+            }
+
+            allBox.form.submit();
+        }
+
+        function handleSubjectChange(subjectBox) {
+
+            const allBox = document.getElementById("allSubjects");
+
+            if (subjectBox.checked) {
+                allBox.checked = false;
+            }
+
+            subjectBox.form.submit();
+        }
+
+    </script>
+
+   
+
 {% endblock content %}
-
-
