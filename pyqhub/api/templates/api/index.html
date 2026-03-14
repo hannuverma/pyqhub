@@ -1,17 +1,92 @@
 {% load static %}
 
-
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}" />
 {% endblock styles %}
 
+{% block content %}
 
-{% block  content%}
+<form method="GET">
 
-    <div>
-        <p>hello world</p>
-    </div>
+  <select name="semester" onchange="this.form.submit()">
+    <option value="">All Semesters</option>
+
+    {% for semester in semesters %}
+    <option value="{{ semester.number }}"
+      {% if request.GET.semester == semester.number|stringformat:"s" %}
+      selected
+      {% endif %}
+    >
+      {{ semester.number }}
+    </option>
+    {% endfor %}
+
+  </select>
+
+
+  <select name="subject" onchange="this.form.submit()">
+    <option value="">All Subjects</option>
+
+    {% for subject in subjects %}
+    <option value="{{ subject.name }}"
+      {% if request.GET.subject == subject.name %}
+      selected
+      {% endif %}
+    >
+      {{ subject.name }}
+    </option>
+    {% endfor %}
+
+  </select>
+
+
+  <select name="exam" onchange="this.form.submit()">
+    <option value="">All Exams</option>
+
+    <option value="MIDSEM"
+      {% if request.GET.exam == "MIDSEM" %}
+      selected
+      {% endif %}
+    >
+      Mid Sem
+    </option>
+
+    <option value="ENDSEM"
+      {% if request.GET.exam == "ENDSEM" %}
+      selected
+      {% endif %}
+    >
+      End Sem
+    </option>
+
+  </select>
+
+  <button type="submit">Filter</button>
+
+</form>
+
+
+{% for paper in papers %}
+
+<div>
+
+  <h3>{{ paper.subject.name }} ({{ paper.year }})</h3>
+
+  <p>
+    Semester {{ paper.semester }} |
+    {{ paper.get_exam_type_display }}
+  </p>
+
+  <a href="{{ paper.pdf.url }}">
+    <img src="{{ paper.preview.url }}" alt="">
+  </a>
+
+</div>
+
+{% empty %}
+
+<p>No papers found</p>
+
+{% endfor %}
 
 {% endblock content %}
-
-
