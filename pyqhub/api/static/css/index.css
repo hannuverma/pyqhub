@@ -97,12 +97,11 @@ h1{position:absolute;
     height: 75px;
 }
 
-#semester-btn input{
+.semester-btn input{
     display: none;
-
 }
 
-#semester-btn input:checked + label{
+.semester-btn input:checked + label{
     background: #ffffff;
     color: #c68c46;
 }

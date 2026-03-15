@@ -24,7 +24,7 @@
         <h3>Year 2025- 26 papers are updated</h3>
     </div>
 
-    <div id="semester-all">
+    <!-- <div id="semester-all">
     <h3>Select Your Semester:</h3>
     <div  id="semester-btn">
         <input type="radio" id="s1" name="semester">
@@ -51,7 +51,7 @@
         <input type="radio" id="s8" name="semester">
         <label for="s8">8th</label>
     </div>
-    </div>
+    </div> -->
 
     <div id="c">
         <h2><u>HERE ARE YOUR PAPERS :</u></h2>
@@ -70,7 +70,7 @@
             </p>
 
             <a href="{{ paper.pdf.url }}">
-                <img src="{{ paper.preview.url }}" alt="">
+                <img src="{{ paper.preview.url }}" alt="" >
             </a>
 
             </div>
@@ -83,33 +83,40 @@
     </div>
 
     <form method="GET">
+        <div id = 'semester-all'>
+
         <h3>Select Your Semester:</h3>
-        <div>
-            <label>
+        <div class = 'semester-btn'>
             <input
             type="radio"
             name="semester"
             value=""
+            class = 'sem'
+            id = 'none'
             onchange="this.form.submit()"
             {% if not request.GET.semester %}
             checked
             {% endif %}
             >
+            <label for = 'none'>
             All Semesters
             </label>
 
             {% for semester in semesters %}
 
-            <label>
             <input
             type="radio"
             name="semester"
             value="{{ semester.number }}"
+            class="sem"
+            id="sem{{ semester.number }}"
             onchange="this.form.submit()"
             {% if request.GET.semester == semester.number|stringformat:"s" %}
             checked
             {% endif %}
             >
+
+            <label for="sem{{ semester.number }}">
             Semester {{ semester.number }}
             </label>
 
@@ -117,6 +124,7 @@
 
             </div>
 
+        </div>
         <h3>Select Examination:</h3>
         <div>
             <label>
