@@ -5,7 +5,6 @@
 {% endblock styles %}
 
 {% block content %}
-
 <div class="land">
        
 
@@ -56,9 +55,7 @@
     <form method="GET">
         <h3>Select Your Semester:</h3>
         <div>
-            <label for = "allSemesters">
-                All Semesters
-            </label>
+            
             <input
             type="radio"
             name="semester"
@@ -69,13 +66,14 @@
             checked
             {% endif %}
             >
+            <label for = "allSemesters">
+                All Semesters
+            </label>
             
 
             {% for semester in semesters %}
 
-            <label for="semester{{ semester.number }}">
-                Semester {{ semester.number }}
-            </label>
+            
             <input
             type="radio"
             name="semester"
@@ -86,6 +84,9 @@
             checked
             {% endif %}
             >
+            <label for="semester{{ semester.number }}">
+                Semester {{ semester.number }}
+            </label>
             
 
             {% endfor %}
@@ -94,44 +95,51 @@
 
         <h3>Select Examination:</h3>
         <div>
-            <label>
+            
             <input
             type="radio"
             name="exam"
             value=""
             onchange="this.form.submit()"
+            id = 'allExams'
             {% if not request.GET.exam %}
             checked
             {% endif %}
             >
-            All Exams
+            <label for = "allExams">
+                All Exams
             </label>
+            
 
 
-            <label>
+            
             <input
             type="radio"
             name="exam"
             value="MIDSEM"
+            id = "midsem"
             onchange="this.form.submit()"
             {% if request.GET.exam == "MIDSEM" %}
             checked
             {% endif %}
             >
+            <label for = "midsem">
             Mid Sem
             {{ MIDSEM }}
-
             </label>
-            <label>
+
+    
             <input
             type="radio"
             name="exam"
             value="ENDSEM"
+            id = "endsem"
             onchange="this.form.submit()"
             {% if request.GET.exam == "ENDSEM" %}
             checked
             {% endif %}
             >
+            <label for = "endsem">
             End Sem
             {{ ENDSEM }}
             </label>
