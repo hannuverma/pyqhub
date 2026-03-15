@@ -62,22 +62,22 @@
 
             <div>
 
-            <h3>{{ paper.subject.name }} ({{ paper.year }})</h3>
+        <h3>{{ paper.subject.name }} ({{ paper.year }})</h3> <!-- this is subject name and year for each paper change this to change that -->
 
             <p>
                 Semester {{ paper.semester }} |
-                {{ paper.get_exam_type_display }}
+                {{ paper.get_exam_type_display }}  <!-- this is for semester, midsem and endsem change this to change that -->
             </p>
 
             <a href="{{ paper.pdf.url }}">
-                <img src="{{ paper.preview.url }}" alt="" >
+                <img src="{{ paper.preview.url }}" alt=""> <!-- this is for the preview image of the paper change this to change that -->
             </a>
 
             </div>
 
             {% empty %}
 
-            <p>No papers found</p>
+            <p>No papers found</p> <!-- this is for when there are no papers found change this to change that -->
 
         {% endfor %}
     </div>
@@ -94,6 +94,7 @@
             class = 'sem'
             id = 'none'
             onchange="this.form.submit()"
+            id = 'allSemesters'
             {% if not request.GET.semester %}
             checked
             {% endif %}
@@ -104,6 +105,9 @@
 
             {% for semester in semesters %}
 
+            <label for="semester{{ semester.number }}">
+                Semester {{ semester.number }}
+            </label>
             <input
             type="radio"
             name="semester"
@@ -111,6 +115,7 @@
             class="sem"
             id="sem{{ semester.number }}"
             onchange="this.form.submit()"
+            id="semester{{ semester.number }}"
             {% if request.GET.semester == semester.number|stringformat:"s" %}
             checked
             {% endif %}
